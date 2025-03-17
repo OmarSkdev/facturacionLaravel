@@ -9,27 +9,35 @@
   <div class="card">
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
+      @include('_mensaje')
 
-      <form action="../../index.html" method="post">
+      <form action="{{url('registro_post')}}" method="post">
+        {{ csrf_field() }}
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Nombre">
+            <input type="text"  name="nombre" class="form-control"
+             placeholder="Nombre" required value="{{ old('nombre') }}">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
               </div>
             </div>
           </div>
+          <span style="color: red;">{{ $errors->first('email')}}</span>
+
         
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" value="{{ old('email')}}"
+           class="form-control" placeholder="Email" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
+        <span style="color: red;">{{ $errors->first('password') }}</span>
+
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -43,7 +51,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" class="btn btn-primary btn-block">Registro</button>
           </div>
           <!-- /.col -->
         </div>
