@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -16,6 +17,30 @@ class AuthController extends Controller
         $data['meta_title'] = 'Login Página';
         return view('auth.login', $data);
     }
+
+    public function loginPost(Request $request)
+    {
+    
+        //dd($request->all());
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password
+            ], true))
+        {
+            if(Auth::User()->is_role == '1')
+            {
+                return redirect()->intended('admin/dashboard');
+            }
+            else
+            {
+                return redirect('/')->with('error', 'Admin no disponible');
+            }
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Por favor ingresar credenciales correctas');
+        }
+    }
+
+
 
     public function registro(Request $request)
     {
