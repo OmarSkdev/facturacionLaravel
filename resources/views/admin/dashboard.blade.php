@@ -1,9 +1,15 @@
 @extends('admin.layouts.app')
 
+<<<<<<< HEAD
  @section('content') 
 
 
  
+=======
+@section('content')
+
+
+>>>>>>> a10f65b (Login Layouts Admin LT3)
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -13,12 +19,16 @@
           <div class="col-sm-6">
             <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
+<<<<<<< HEAD
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Dashboard v1</li>
             </ol>
           </div><!-- /.col -->
+=======
+          
+>>>>>>> a10f65b (Login Layouts Admin LT3)
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -91,13 +101,25 @@
           <!-- ./col -->
         </div>
         <!-- /.row -->
+<<<<<<< HEAD
         <!-- Main row -->
         
         <!-- /.row (main row) -->
+=======
+        
+        
+>>>>>>> a10f65b (Login Layouts Admin LT3)
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
+<<<<<<< HEAD
   <!-- /.content-wrapper -->
  @endsection
   
+=======
+  
+  @endsection
+
+
+>>>>>>> a10f65b (Login Layouts Admin LT3)
