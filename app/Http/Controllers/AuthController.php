@@ -73,4 +73,10 @@ class AuthController extends Controller
         return view('auth.olvidar_pw', $data);
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
 }
