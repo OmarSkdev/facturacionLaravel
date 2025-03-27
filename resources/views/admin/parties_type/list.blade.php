@@ -15,6 +15,7 @@
 
         <section class="content">
             <div class="container-fluid">
+              @include('_mensaje')
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
@@ -23,6 +24,7 @@
                       <a href="{{ url('admin/parties_type/add')}}" class="btn btn-primary float-right">
                         Agregar Nueva Parties Type</a>
                     </div>
+                    
                     <!-- /.card-header -->
                     <div class="card-body">
                       <table class="table table-bordered">
@@ -35,27 +37,30 @@
                           </tr>
                         </thead>
                         <tbody>
+                          @forelse($getRegistro as $valor )                            
                           <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
+                            <td>{{ $valor->id}}</td>
+                            <td>{{ $valor->parties_type_nombre}}</td>
                             <td>
                                 <a href="" class="btn btn-info"><i class="fas fa-pencil-alt">
                                 </i></a>
                                 <a href="" class="btn btn-danger"><i class="fas fa-trash">
                                 </i></a>
                             </td>                            
-                          </tr>                          
+                          </tr>
+                          @empty 
+                          <tr>
+                            <td colspan="100%"> No hay registros</td>
+                          </tr>
+                          @endforelse                       
                         </tbody>
                       </table>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
                       <ul class="pagination pagination-sm m-0 float-right">
-                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        {!! $getRegistro->appends(Illuminate\Support\Facades\Request::
+                        except('page'))->links()!!}
                       </ul>
                     </div>
                   </div>
