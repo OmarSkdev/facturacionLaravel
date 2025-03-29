@@ -42,9 +42,12 @@
                             <td>{{ $valor->id}}</td>
                             <td>{{ $valor->parties_type_nombre}}</td>
                             <td>
-                                <a href="" class="btn btn-info"><i class="fas fa-pencil-alt">
+                                <a href="{{ url('admin/parties_type/edit/'.$valor->id)}}" class="btn btn-info"><i class="fas fa-pencil-alt">
                                 </i></a>
-                                <a href="" class="btn btn-danger"><i class="fas fa-trash">
+                                <a href="{{ url('admin/parties_type/delete/'.$valor->id)}}" 
+                                  class="btn btn-danger" 
+                                  onclick="return confirm('Estás seguro que deseas eliminar?')">
+                                  <i class="fas fa-trash">
                                 </i></a>
                             </td>                            
                           </tr>

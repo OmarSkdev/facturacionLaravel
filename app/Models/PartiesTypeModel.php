@@ -19,4 +19,9 @@ class PartiesTypeModel extends Model
         $return = $return->paginate(2);
         return $return;
     }
+
+    static public function singleGetRegistro($id)
+    {
+        return self::find($id);
+    }
 }
