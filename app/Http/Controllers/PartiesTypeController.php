@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PartiesTypeModel;
+use App\Models\PartiesModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,5 +63,16 @@ class PartiesTypeController extends Controller
 
         return redirect('admin/parties_type/')
         ->with('success', 'Registro eliminado exitosamente');
+    }
+
+    public function parties()
+    {
+        return view('admin.parties.list');
+    }
+
+    public function parties_add()
+    {
+        $datos['getPartiesType'] = PartiesTypeModel::get();
+        return view('admin.parties.add', $datos);
     }
 }
