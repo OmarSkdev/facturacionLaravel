@@ -67,12 +67,30 @@ class PartiesTypeController extends Controller
 
     public function parties()
     {
-        return view('admin.parties.list');
+        $datos['getRegistro'] = PartiesModel::getRegistroAll();
+        return view('admin.parties.list', $datos);
     }
 
     public function parties_add()
     {
         $datos['getPartiesType'] = PartiesTypeModel::get();
         return view('admin.parties.add', $datos);
+    }
+
+    public function parties_insertar(Request $request)
+    {
+        //dd($request->all());
+        $guardar = new PartiesModel;
+        $guardar->parties_type_id = trim($request->parties_type_id);
+        $guardar->full_name = trim($request->full_name);
+        $guardar->phone_no = trim($request->phone_no);
+        $guardar->address = trim($request->address);
+        $guardar->account_holder_name = trim($request->account_holder_name);
+        $guardar->account_no = trim($request->account_no);
+        $guardar->bank_name = trim($request->bank_name);
+        $guardar->ifsc_code = trim($request->ifsc_code);
+        $guardar->branch_address = trim($request->branch_address);
+        $guardar->save();
+        return redirect('admin/parties')->with('success', 'Registro creado exitósamente');
     }
 }

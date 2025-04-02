@@ -75,7 +75,7 @@
             </div>        
 
             <div class="form-group row">
-                <label class="col-sm-2.5 col-form-label">Nombre del titular cuenta
+                <label class="col-sm-2 col-form-label">Nombre del titular cuenta
                   <span style="color:red;">*</span>
                 </label>
                 <div class="col-sm-8">
@@ -114,11 +114,21 @@
                 </div>
             </div>       
 
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Dirección Banco
+                <span style="color:red;">*</span>
+              </label>
+              <div class="col-sm-8">
+                <input type="text" name="branch_address" class="form-control" 
+                placeholder="Dirección Sucursal" required>
+              </div>
+          </div>     
+
 
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            <button type="submit" class="btn btn-info">Sign in</button>
+            <button type="submit" class="btn btn-info">Agregar</button>
             <a href="{{ url('admin/parties')}}" class="btn btn-default float-right">Cancel</button>
           </div>
           <!-- /.card-footer -->

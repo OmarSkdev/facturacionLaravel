@@ -30,21 +30,41 @@
                       <table class="table table-bordered">
                         <thead>
                           <tr>
-                            <th style="width: 10px">#</th>
-                            <th  style="width: 40px">Nombre Party</th>
-                           
-                            <th  style="width: 80px">Acción</th>
+                            <th>#</th>
+                            <th>Cargo</th>
+                            <th>Nombre</th>
+                            <th>N°Fono</th>
+                            <th>N°Titular Cuenta</th>
+                            <th>Dirección</th>
+                            <th>Nombre Banco</th>
+                            <th>N° Cuenta</th>                            
+                            <th>IFSC</th>
+                            <th>Dirección Sucursal</th>
+                            <th>Fecha</th>
+                            <th>Acción</th>
                           </tr>
                         </thead>
                         <tbody>
-{{--                           @forelse($getRegistro as $valor )                            
+                        @forelse($getRegistro as $valor )                            
                           <tr>
                             <td>{{ $valor->id}}</td>
                             <td>{{ $valor->parties_type_nombre}}</td>
+                            <td>{{ $valor->full_name}}</td>
+                            <td>{{ $valor->phone_no}}</td>
+                            <td>{{ $valor->account_holder_name}}</td>
+                            <td>{{ $valor->address}}</td>
+                            
+                            <td>{{ $valor->bank_name}}</td>
+                            <td>{{ $valor->account_no}}</td>
+                            
+                                                        
+                            <td>{{ $valor->ifsc_code}}</td>
+                            <td>{{ $valor->branch_address}}</td>
+                            <td>{{ date('d-m-Y', strtotime($valor->created_at)) }}</td>
                             <td>
-                                <a href="{{ url('admin/parties_type/edit/'.$valor->id)}}" class="btn btn-info"><i class="fas fa-pencil-alt">
+                                <a href="{{ url('admin/parties/edit/'.$valor->id)}}" class="btn btn-info"><i class="fas fa-pencil-alt">
                                 </i></a>
-                                <a href="{{ url('admin/parties_type/delete/'.$valor->id)}}" 
+                                <a href="{{ url('admin/parties/delete/'.$valor->id)}}" 
                                   class="btn btn-danger" 
                                   onclick="return confirm('Estás seguro que deseas eliminar?')">
                                   <i class="fas fa-trash">
@@ -55,15 +75,15 @@
                           <tr>
                             <td colspan="100%"> No hay registros</td>
                           </tr>
-                          @endforelse   --}}                     
+                          @endforelse                  
                         </tbody>
                       </table>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
                       <ul class="pagination pagination-sm m-0 float-right">
-                        {{-- {!! $getRegistro->appends(Illuminate\Support\Facades\Request::
-                        except('page'))->links()!!} --}}
+                        {!! $getRegistro->appends(Illuminate\Support\Facades\Request::
+                        except('page'))->links()!!}
                       </ul>
                     </div>
                   </div>
