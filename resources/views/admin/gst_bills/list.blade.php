@@ -30,18 +30,34 @@
                       <table class="table table-bordered">
                         <thead>
                           <tr>
-                            <th style="width: 10px">#</th>
-                            <th  style="width: 40px">Nombre GST</th>
-                           
-                            <th  style="width: 80px">Acción</th>
+                            <th>#</th>
+                            <th>Nombre parties_type</th>
+                            <th>Fecha Factura</th>
+                            <th>Nro Factura</th> 
+                            <th>Monto Total</th>   
+                            <th>Monto Impuesto</th>
+                            <th>Monto Neto</th>                         
+                            <th>Acción</th>
                           </tr>
                         </thead>
                         <tbody>
-                        {{--   @forelse($getRegistro as $valor )                            
+                          @php
+                            $montoTotal = 0;
+                          @endphp                           
+
+                          @foreach($getRegistro as $valor )   
+                          @php
+                            $montoTotal = $montoTotal + $valor->monto_total
+                          @endphp                         
                           <tr>
                             <td>{{ $valor->id}}</td>
                             <td>{{ $valor->parties_type_nombre}}</td>
-                            <td>
+                            <td>{{ date('d-m-Y', strtotime($valor->fecha_factura))}}</td>
+                            <td>{{ $valor->nro_factura}}</td>
+                            <td>{{ $valor->monto_total}}</td>
+                            <td>{{ $valor->monto_impuesto}}</td>
+                            <td>{{ $valor->monto_neto}}</td>
+                            {{-- <td>
                                 <a href="{{ url('admin/parties_type/edit/'.$valor->id)}}" class="btn btn-info"><i class="fas fa-pencil-alt">
                                 </i></a>
                                 <a href="{{ url('admin/parties_type/delete/'.$valor->id)}}" 
@@ -49,13 +65,15 @@
                                   onclick="return confirm('Estás seguro que deseas eliminar?')">
                                   <i class="fas fa-trash">
                                 </i></a>
-                            </td>                            
-                          </tr>
-                          @empty 
-                          <tr>
-                            <td colspan="100%"> No hay registros</td>
-                          </tr>
-                          @endforelse         --}}               
+                            </td>     --}}                        
+                          </tr>                         
+                          @endforeach
+                          @if(!empty($montoTotal))
+                            <tr>
+                              <th colspan="4">Total $</th>
+                              <td>$ {{ number_format($montoTotal, 2) }}</td>
+                            </tr>
+                          @endif                                       
                         </tbody>
                       </table>
                     </div>

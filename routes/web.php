@@ -27,6 +27,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/parties/add', [PartiesTypeController::class, 'parties_insertar']);
     Route::get('admin/gst_bills', [GSTBillsController::class, 'gst_bills']);
     Route::get('admin/gst_bills/add', [GSTBillsController::class, 'gst_insertar']);
+    Route::post('admin/gst_bills/add', [GSTBillsController::class, 'gst_bills_insertar']);
 
 
 
