@@ -28,8 +28,10 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/gst_bills', [GSTBillsController::class, 'gst_bills']);
     Route::get('admin/gst_bills/add', [GSTBillsController::class, 'gst_insertar']);
     Route::post('admin/gst_bills/add', [GSTBillsController::class, 'gst_bills_insertar']);
-
-
+    Route::get('admin/gst_bills/edit/{id}', [GSTBillsController::class, 'gst_bills_edit']);
+    Route::post('admin/gst_bills/edit/{id}', [GSTBillsController::class, 'gst_bills_update']);
+    Route::get('admin/gst_bills/delete/{id}', [GSTBillsController::class, 'gst_bills_delete']);
+    Route::get('admin/gst_bills/view/{id}', [GSTBillsController::class, 'gst_bills_view']);
 
 
 });

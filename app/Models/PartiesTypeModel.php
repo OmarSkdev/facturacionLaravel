@@ -24,4 +24,5 @@ class PartiesTypeModel extends Model
     {
         return self::find($id);
     }
+    
 }

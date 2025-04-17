@@ -57,15 +57,19 @@
                             <td>{{ $valor->monto_total}}</td>
                             <td>{{ $valor->monto_impuesto}}</td>
                             <td>{{ $valor->monto_neto}}</td>
-                            {{-- <td>
-                                <a href="{{ url('admin/parties_type/edit/'.$valor->id)}}" class="btn btn-info"><i class="fas fa-pencil-alt">
-                                </i></a>
-                                <a href="{{ url('admin/parties_type/delete/'.$valor->id)}}" 
+                            <td>
+                              <a href="{{ url('admin/gst_bills/view/'.$valor->id)}}" class="btn btn-info">
+                                <i class="fas fa-eye"></i>
+                              </a>
+                                <a href="{{ url('admin/gst_bills/edit/'.$valor->id)}}" class="btn btn-info">
+                                  <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <a href="{{ url('admin/gst_bills/delete/'.$valor->id)}}" 
                                   class="btn btn-danger" 
                                   onclick="return confirm('Estás seguro que deseas eliminar?')">
                                   <i class="fas fa-trash">
                                 </i></a>
-                            </td>     --}}                        
+                            </td>                        
                           </tr>                         
                           @endforeach
                           @if(!empty($montoTotal))

@@ -21,4 +21,9 @@ class GSTBillsModel extends Model
         $return = $return->paginate(3);
         return $return;
     }
+
+    public function get_parties_type_nombre()
+    {
+        return $this->belongsTo(PartiesTypeModel::class, 'parties_type_id');
+    }
 }
