@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\PartiesTypeModel;
 use App\Models\PartiesModel;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request ;
+
 
 class PartiesTypeController extends Controller
 {
     //
-    public function parties_type()
+    public function parties_type(Request $request)
    
     {
-        $datos['getRegistro'] = PartiesTypeModel::getRegistroAll();
+        $datos['getRegistro'] = PartiesTypeModel::getRegistroAll($request);
         return view('admin.parties_type.list', $datos);
     }
 
