@@ -18,6 +18,53 @@
               @include('_mensaje')
               <div class="row">
                 <div class="col-md-12">
+                  <form method="get" action="">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="form-group col-md-1">
+                          <label>ID</label>
+                          <input type="text" name="id" value="{{Request()->id}}"                          
+                           class="form-control" placeholder="ID">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                          <label>Parties Type Nombre</label>
+                          <input type="text" name="parties_type_nombre" value="{{ Request()->parties_type_nombre}}"
+                           class="form-control" placeholder="Parties Type Nombre">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                          <label>Nombre Completo</label>
+                          <input type="text" name="full_name" value="{{ Request()->full_name}}"
+                           class="form-control" placeholder="Nombre Completo">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                          <label>Teléfono</label>
+                          <input type="text" name="phone_no" value="{{ Request()->phone_no}}"
+                           class="form-control" placeholder="Teléfono">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                          <label>Creado</label>
+                          <input type="date" name="created_at" value="{{ Request()->created_at}}"
+                           class="form-control">
+                        </div>
+
+                        
+
+                        <div style="clear: both;"></div>
+                        <br>
+
+                        <div class="col-md-12">
+                          <button class="btn btn-primary" type="submit">Buscar</button>
+                          <a href="{{ url('admin/parties_type')}}" class="btn btn-success">
+                            Resetear
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
                   <div class="card">
                     <div class="card-header">
                       <h3 class="card-title">Lista Parties</h3>

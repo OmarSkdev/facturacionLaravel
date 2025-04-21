@@ -65,9 +65,9 @@ class PartiesTypeController extends Controller
         ->with('success', 'Registro eliminado exitosamente');
     }
 
-    public function parties()
+    public function parties(Request $request)
     {
-        $datos['getRegistro'] = PartiesModel::getRegistroAll();
+        $datos['getRegistro'] = PartiesModel::getRegistroAll($request);
         return view('admin.parties.list', $datos);
     }
 

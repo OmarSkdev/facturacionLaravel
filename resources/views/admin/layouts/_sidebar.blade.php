@@ -82,6 +82,16 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{ url('admin/parties')}}" class="nav-link
+              @if(Request::segment(2) == 'parties') active @endif">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                Parties
+              </p>
+            </a>
+          </li>
           
           <li class="nav-item">
             <a href="{{ url('admin/gst_bills')}}" class="nav-link
