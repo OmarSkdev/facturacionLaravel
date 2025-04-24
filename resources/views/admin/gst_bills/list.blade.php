@@ -20,6 +20,59 @@
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header">
+                      <h1 class="card-title">Buscar GST Factura</h1>
+                    </div>
+
+                    <form method="get" action="">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="form-group col-md-1">
+                            <label>ID</label>
+                            <input type="text" name="id" value="{{Request()->id}}"                          
+                             class="form-control" placeholder="ID">
+                          </div>
+  
+                          <div class="form-group col-md-3">
+                            <label>Parties Type Nombre</label>
+                            <input type="text" name="parties_type_nombre" value="{{ Request()->parties_type_nombre}}"
+                             class="form-control" placeholder="Parties Type Nombre">
+                          </div>
+  
+                          <div class="form-group col-md-3">
+                            <label>Fecha </label>
+                            <input type="text" name="fecha_factura" value="{{ Request()->fecha_factura}}"
+                             class="form-control" placeholder="Fecha">
+                          </div>
+  
+                          <div class="form-group col-md-3">
+                            <label>N°Factura</label>
+                            <input type="text" name="nro_factura" value="{{ Request()->nro_factura}}"
+                             class="form-control" placeholder="N°Factura">
+                          </div>
+  
+                          <div class="form-group col-md-2">
+                            <label>Creado</label>
+                            <input type="date" name="created_at" value="{{ Request()->created_at}}"
+                             class="form-control">
+                          </div>
+  
+                          
+  
+                          <div style="clear: both;"></div>
+                          <br>
+  
+                          <div class="col-md-12">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                            <a href="{{ url('admin/parties_type')}}" class="btn btn-success">
+                              Resetear
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="card">
+                    <div class="card-header">
                       <h3 class="card-title">Lista Parties Type</h3>
                       <a href="{{ url('admin/gst_bills/add')}}" class="btn btn-primary float-right">
                         Agregar Nuevo GST</a>
@@ -45,7 +98,7 @@
                             $montoTotal = 0;
                           @endphp                           
 
-                          @foreach($getRegistro as $valor )   
+                          @forelse($getRegistro as $valor )   
                           @php
                             $montoTotal = $montoTotal + $valor->monto_total
                           @endphp                         
@@ -70,8 +123,12 @@
                                   <i class="fas fa-trash">
                                 </i></a>
                             </td>                        
-                          </tr>                         
-                          @endforeach
+                          </tr>
+                          @empty   
+                            <tr>
+                              <td colspan="100%">Registro no Encontrado.</td>
+                            </tr>                    
+                          @endforelse
                           @if(!empty($montoTotal))
                             <tr>
                               <th colspan="4">Total $</th>

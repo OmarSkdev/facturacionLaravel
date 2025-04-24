@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class GSTBillsController extends Controller
 {
-    public function gst_bills()
+    public function gst_bills(Request $request)
     {
         //$data['getRegistro'] = GSTBillsModel::get();
-        $data['getRegistro'] = GSTBillsModel::getRegistroAll();
+        $data['getRegistro'] = GSTBillsModel::getRegistroAll($request);
         return view('admin.gst_bills.list', $data);
     }
 
