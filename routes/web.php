@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PartiesTypeController;
 use App\Http\Controllers\GSTBillsController;
-
+use App\Http\Controllers\MiCuentaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'login']);
@@ -32,6 +32,11 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/gst_bills/edit/{id}', [GSTBillsController::class, 'gst_bills_update']);
     Route::get('admin/gst_bills/delete/{id}', [GSTBillsController::class, 'gst_bills_delete']);
     Route::get('admin/gst_bills/view/{id}', [GSTBillsController::class, 'gst_bills_view']);
+
+    Route::get('admin/mi_cuenta', [MiCuentaController::class, 'mi_cuenta']);
+    Route::post('admin/mi_cuenta/update', [MiCuentaController::class, 'mi_cuenta_update']);
+
+
 
 
 });
