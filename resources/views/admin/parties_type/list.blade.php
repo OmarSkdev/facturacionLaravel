@@ -70,6 +70,10 @@
                       <h3 class="card-title">Lista Parties Type</h3>
                       <a href="{{ url('admin/parties_type/add')}}" class="btn btn-primary float-right">
                         Agregar Nueva Parties Type</a>
+
+                        <a href="{{ url('admin/parties_type/pdf_generator')}}" 
+                        class="btn btn-secondary float-right mr-2">
+                          Generar PDF</a>
                     </div>
                     
                     <!-- /.card-header -->

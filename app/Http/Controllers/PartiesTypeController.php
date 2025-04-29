@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\PartiesTypeModel;
 use App\Models\PartiesModel;
 use Illuminate\Http\Request ;
-
+use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 
 class PartiesTypeController extends Controller
 {
@@ -15,6 +16,19 @@ class PartiesTypeController extends Controller
     {
         $datos['getRegistro'] = PartiesTypeModel::getRegistroAll($request);
         return view('admin.parties_type.list', $datos);
+    }
+
+    public function parties_type_generar_pdf()
+    {
+        $obtTodoRegistro = PartiesTypeModel::get();
+        $datos = [
+            'titulo' => 'Bienvenido a Omar.com',
+            'fecha' => date('m/d/Y'),
+            'parties' => $obtTodoRegistro
+        ];
+
+        $pdf = PDF::loadView('PartieTypePDF', $datos);
+        return $pdf->download('factura.pdf');
     }
 
     public function parties_type_add()
