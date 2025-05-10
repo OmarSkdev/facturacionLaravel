@@ -61,4 +61,9 @@ class PartiesModel extends Model
     {
         return self::find($id);
     }
+
+    public function obt_parties_type_nombre()
+    {
+        return $this->belongsTo(PartiesTypeModel::class, 'parties_type_id');
+    }
 }

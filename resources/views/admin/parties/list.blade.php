@@ -70,6 +70,10 @@
                       <h3 class="card-title">Lista Parties</h3>
                       <a href="{{ url('admin/parties/add')}}" class="btn btn-primary float-right">
                         Agregar Nueva Parties</a>
+                      <a href="{{ url('admin/parties/pdf')}}" 
+                        class="btn btn-success float-right mr-2">
+                        Generar PDF
+                      </a>
                     </div>
                     
                     <!-- /.card-header -->
@@ -109,6 +113,10 @@
                             <td>{{ $valor->branch_address}}</td>
                             <td>{{ date('d-m-Y', strtotime($valor->created_at)) }}</td>
                             <td>
+                                <a href="{{ url('admin/parties/pdf_single/'.$valor->id)}}"
+                                  class="btn btn-success">
+                                  <i class="fas fa-file-pdf"></i>
+                                </a>
                                 <a href="{{ url('admin/parties/edit/'.$valor->id)}}" class="btn btn-info"><i class="fas fa-pencil-alt">
                                 </i></a>
                                 <a href="{{ url('admin/parties/delete/'.$valor->id)}}" 

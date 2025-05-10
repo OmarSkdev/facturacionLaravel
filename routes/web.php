@@ -28,6 +28,11 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/parties', [PartiesTypeController::class, 'parties']);
     Route::get('admin/parties/add', [PartiesTypeController::class, 'parties_add']);
     Route::post('admin/parties/add', [PartiesTypeController::class, 'parties_insertar']);
+    Route::get('admin/parties/pdf', [PartiesTypeController::class, 'parties_pdf_descargar']);
+    Route::get('admin/parties/pdf_single/{id}', [PartiesTypeController::class, 
+    'parties_pdf_single_descargar']);
+
+
     Route::get('admin/gst_bills', [GSTBillsController::class, 'gst_bills']);
     Route::get('admin/gst_bills/add', [GSTBillsController::class, 'gst_insertar']);
     Route::post('admin/gst_bills/add', [GSTBillsController::class, 'gst_bills_insertar']);

@@ -6,7 +6,9 @@ use App\Models\PartiesTypeModel;
 use App\Models\PartiesModel;
 use Illuminate\Http\Request ;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Mpdf\Mpdf;
+
+
 
 class PartiesTypeController extends Controller
 {
@@ -28,6 +30,15 @@ class PartiesTypeController extends Controller
         ];
 
         $pdf = PDF::loadView('PartieTypePDF', $datos);
+        //$html = view('reporte-mpdf', $datos)->render();
+        //$mpdf = new Mpdf();
+        // Escribir el contenido HTML
+        //$mpdf->WriteHTML($html);
+
+        // Descargar o mostrar el PDF
+        /* return response()->streamDownload(function() use ($mpdf) {
+            $mpdf->Output();
+        }, 'reporte-mpdf.pdf'); */
         return $pdf->download('factura.pdf');
     }
 
@@ -83,6 +94,38 @@ class PartiesTypeController extends Controller
     {
         $datos['getRegistro'] = PartiesModel::getRegistroAll($request);
         return view('admin.parties.list', $datos);
+
+    }
+
+    public function parties_pdf_single_descargar($id)
+    {
+        $datos['obtSingleRegistro'] = PartiesModel::find($id);
+
+        $datos['html'] = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />';
+
+
+        $datos['titulo'] = "Tutoriales de Programacion && Desarrollo Web y Scripts";
+
+        $datos['fecha'] = date('d/m/Y');
+
+        $pdf = Pdf::loadView('PartiesPDFSingle', $datos);
+        return $pdf->download('errorsol.pdf');
+    }
+
+    public function parties_pdf_descargar(){
+        //$obtTodoRegistro = PartiesModel::get();
+        $obtTodoRegistro = PartiesModel::select('parties.*',
+        'parties_type.parties_type_nombre')
+        ->join('parties_type', 'parties_type_id', '=',
+        'parties.parties_type_id')
+        ->get();
+        $datos = [
+            'titulo' => 'Bienvenido a OmarCode.com',
+            'fecha' => date('m/d/Y'),
+            'parties' => $obtTodoRegistro
+        ];
+        $pdf = PDF::loadView('PartiesPDF', $datos);
+        return $pdf->download('fact.pdf');
     }
 
     public function parties_add()
