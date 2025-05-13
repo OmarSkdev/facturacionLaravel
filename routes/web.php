@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PartiesTypeController;
 use App\Http\Controllers\GSTBillsController;
 use App\Http\Controllers\MiCuentaController;
+use App\Http\Controllers\ConfiguracionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'login']);
@@ -43,6 +44,11 @@ Route::group(['middleware' => 'admin'], function(){
 
     Route::get('admin/mi_cuenta', [MiCuentaController::class, 'mi_cuenta']);
     Route::post('admin/mi_cuenta/update', [MiCuentaController::class, 'mi_cuenta_update']);
+
+    Route::get('admin/configuracion', [ConfiguracionController::class, 'configuracion']);
+    Route::post('admin/configuracion/update', [ConfiguracionController::class, 'configuracion_update']);
+
+
 
 
 

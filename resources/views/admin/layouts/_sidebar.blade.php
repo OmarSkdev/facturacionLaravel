@@ -103,25 +103,16 @@
             </a>
           </li>
 
+          
           <li class="nav-item">
-            <a href="{{ url('admin/mi_cuenta')}}" class="nav-link
-              @if(Request::segment(2) == 'mi_cuenta') active @endif">
+            <a href="{{ url('admin/configuracion')}}" class="nav-link
+              @if(Request::segment(2) == 'configuracion') active @endif">
               <i class="nav-icon far fa-user"></i>
               <p>
-                Mi Cuenta
+                Configuracion
               </p>
             </a>
-          </li>
-          
-         
-          
-          
-         
-          
-          
-          
-         
-          
+          </li>  
           
           
          

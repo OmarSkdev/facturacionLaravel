@@ -129,7 +129,7 @@
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-info">Agregar</button>
-            <a href="{{ url('admin/parties')}}" class="btn btn-default float-right">Cancel</button>
+            <a href="{{ url('admin/parties')}}" class="btn btn-default float-right">Cancel</a>
           </div>
           <!-- /.card-footer -->
         </form>

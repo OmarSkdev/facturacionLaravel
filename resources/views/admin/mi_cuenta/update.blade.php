@@ -81,7 +81,7 @@
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-info">Enviar</button>
-            <a href="{{ url('admin/mi_cuenta')}}" class="btn btn-default float-right">Cancel</button>
+            <a href="{{ url('admin/mi_cuenta')}}" class="btn btn-default float-right">Cancel</a>
           </div>
           <!-- /.card-footer -->
         </form>
