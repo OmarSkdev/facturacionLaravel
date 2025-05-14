@@ -42,7 +42,7 @@
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-info">Sign in</button>
-            <a href="{{ url('admin/parties_type')}}" class="btn btn-default float-right">Cancel</button>
+            <a href="{{ url('admin/parties_type')}}" class="btn btn-default float-right">Cancel</a>
           </div>
           <!-- /.card-footer -->
         </form>

@@ -27,6 +27,11 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{url('plugins/summernote/summernote-bs4.min.css')}}">
 
+  @php
+    $obtConfiguracion = App\Models\ConfiguracionModel::first();
+  @endphp
+  <link rel="icon" type="image/x-icon" href="{{ url('upload/'.$obtConfiguracion->favicono)}}">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
