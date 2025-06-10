@@ -9,8 +9,9 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Olvidé Password</p>
-
-      <form action="../../index3.html" method="post">
+      @include('_mensaje')
+      <form action="{{ url('olvidar_pw_post')}}" method="post">
+        {{ csrf_field() }}
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">

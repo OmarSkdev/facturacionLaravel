@@ -14,6 +14,8 @@ Route::post('/login_post', [AuthController::class, 'loginPost']);
 Route::get('/registro', [AuthController::class, 'registro']);
 Route::post('/registro_post', [AuthController::class, 'registroPost']);
 Route::get('/olvidar_pw', [AuthController::class, 'olvidarPW']);
+Route::post('/olvidar_pw_post', [AuthController::class, 'olvidarPW_post']);
+
 
 Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);

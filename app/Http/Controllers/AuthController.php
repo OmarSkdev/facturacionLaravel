@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Mail\OlvidarPassword;
 
 
 class AuthController extends Controller
@@ -67,10 +69,30 @@ class AuthController extends Controller
         return redirect('/')->with('success', 'Registro exitoso');
     }
 
-    public function olvidarPW(Request $request)
+    public function olvidarPW()
     {
         $data['meta_title'] = 'Olvidar Contraseña Página';
         return view('auth.olvidar_pw', $data);
+    }
+
+    public function olvidarPW_post(Request $request)
+    {
+        //dd($request->all());
+        $conteo = User::where('email', '=', $request->email)->count();
+        if ($conteo > 0)
+        {
+            $usuario = User::where('email', '=', $request->email)->first();
+            $random_pass = rand(111111111,99999999);
+            $usuario->password = Hash::make($random_pass);
+            $usuario->save();
+            
+            Mail::to($usuario->email)->send(new OlvidarPassword($usuario, $random_pass));
+
+            return redirect()->back()->with('success', 'Password ha sido enviado al email');
+        } else {
+            return redirect()->back()->with('error', 'Email no encontrado');
+        }
+        
     }
 
     public function logout()
